@@ -1,12 +1,6 @@
+import { useState } from "react";
 import styles from "../../styles/Home.module.css";
-
-const colours = [
-  [217, 181, 105],
-  [201, 210, 158],
-  [157, 178, 130],
-  [46, 88, 81],
-  [5, 46, 66]
-];
+import getColours from "../api";
 
 function shuffle(array) {
   let currentIndex = array.length,
@@ -38,8 +32,22 @@ const randomiser = array => {
 };
 
 const Home = () => {
+  const [colours, setColours] = useState([
+    [217, 181, 105],
+    [201, 210, 158],
+    [157, 178, 130],
+    [46, 88, 81],
+    [5, 46, 66]
+  ]);
+
+  const newColours = async () => {
+    const fetchedColours = await getColours();
+    setColours(fetchedColours);
+  };
+
   return (
     <div className={styles.container}>
+      <button onClick={() => newColours()}>Colours</button>
       <div className={styles.board}>
         <div className={styles.squaresContainer}>{randomiser(colours)}</div>
         <div className={styles.squaresContainer}>{randomiser(colours)}</div>
