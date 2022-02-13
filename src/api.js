@@ -15,11 +15,11 @@ export default async function getRandomColours() {
   return outputColours;
 }
 
-export async function getColoursFromSelection() {
+export async function getColoursFromSelection(rgbValue) {
   const fetchColours = await fetch("http://colormind.io/api/", {
     method: "POST",
     body: JSON.stringify({
-      result: [[49, 69, 76], [33, 99, 113], "N", "N", "N"],
+      result: [[rgbValue], "N", "N", "N", "N"],
       model: "default"
     })
   });

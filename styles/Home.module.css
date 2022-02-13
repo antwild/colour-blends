@@ -1,16 +1,68 @@
+@import url("http://fonts.cdnfonts.com/css/kimberlly");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital@0;1&display=swap");
+
 .container {
   height: 100vh;
-  width: 100wv;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 12.5vh 0;
+  gap: 6em;
+  background: linear-gradient(270deg, #000000, #ffffff);
+  background-size: 200% 200%;
+}
+
+.leftDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 65vh;
+  height: 100%;
+}
+
+.titlesContainer {
+  padding-bottom: 4em;
+}
+
+.title {
+  font-family: kimberlly, sans-serif;
+  letter-spacing: 5px;
+  font-size: 70px;
+  color: rgb(95, 194, 179);
+  margin: 0;
+  text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000,
+    1px 1px 0 #000000;
+}
+
+.subtitle {
+  font-family: "Noto Serif", serif;
+  margin: 0;
+}
+
+.or {
+  margin: 1.5em 0;
+  font-family: kimberlly, sans-serif;
+  color: rgb(95, 194, 179);
+  text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000,
+    1px 1px 0 #000000;
+  text-align: center;
+  width: 30%;
+}
+
+.howToItem {
+  margin-top: 0;
+}
+
+.userInput {
+  width: 30%;
 }
 
 .board {
   height: 75vh;
   width: 75vh;
   display: flex;
-  /* border: 1px solid sandybrown; */
   flex-direction: column;
 }
 
@@ -23,6 +75,14 @@
 .squares {
   height: calc(75vh / 5);
   width: calc(75vh / 5);
-  /* background: rgb(201, 76, 76); */
   border: 1px solid pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.letters {
+  font-family: Montserrat, sans-serif;
+  font-size: 5em;
+  color: rgb(46, 88, 81);
 }
