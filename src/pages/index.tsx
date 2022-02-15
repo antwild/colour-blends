@@ -1,6 +1,7 @@
 import { useState } from "react";
 import style from "../../styles/Home.module.css";
-import getColours from "../api";
+import { getRandomColours, getColoursFromSelection } from "../api";
+import classnames from "classnames";
 
 function shuffle(array) {
   let currentIndex = array.length,
@@ -40,9 +41,19 @@ const Home = () => {
     [5, 46, 66]
   ]);
 
+  const [userColour, setUserColour] = useState("");
+
   const newColours = async () => {
-    const fetchedColours = await getColours();
+    const fetchedColours = await getRandomColours();
     setColours(fetchedColours);
+  };
+
+  const updateColors = async event => {
+    event.preventDefault();
+    const rgb = `${event.target[0].value},${event.target[1].value},${event.target[2].value}`;
+    const fetchedColours = await getColoursFromSelection(rgb);
+    setColours(fetchedColours);
+    setUserColour(rgb);
   };
 
   return (
@@ -62,7 +73,7 @@ const Home = () => {
           Click the "Generate" button below to generate a random theme of five
           colours that look great together
         </p>
-        <button className={style.userInput} onClick={() => newColours()}>
+        <button className={style.generateButton} onClick={() => newColours()}>
           Generate
         </button>
 
@@ -71,10 +82,34 @@ const Home = () => {
           Add an RGB value and click the "Use My Colour" button below to
           generate a theme of five colours that includes your chosen colour
         </p>
-        <input className={style.userInput} placeholder="RGB Value" />
-        <button className={style.userInput} onClick={() => newColours()}>
-          Use My Colour
-        </button>
+        <form onSubmit={updateColors} className={style.form}>
+          <input
+            className={classnames(style.userInput, style.red)}
+            placeholder="Red Value"
+            type="text"
+            maxlength="3"
+          />
+          <p className={style.comma}>,</p>
+          <input
+            className={classnames(style.userInput, style.green)}
+            placeholder="Green Value"
+            type="text"
+            maxlength="3"
+          />
+          <p className={style.comma}>,</p>
+          <input
+            className={classnames(style.userInput, style.blue)}
+            placeholder="Blue Value"
+            type="text"
+            maxlength="3"
+          />
+          <input
+            type="submit"
+            value="Use My Colour"
+            className={style.generateButton}
+            style={{ backgroundColor: `rgb(${userColour})` }}
+          />
+        </form>
       </div>
       <div className={style.board}>
         <div className={style.squaresContainer}>{randomiser(colours)}</div>

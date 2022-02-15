@@ -42,7 +42,7 @@
 }
 
 .or {
-  margin: 1.5em 0;
+  margin: 1.5em auto;
   font-family: kimberlly, sans-serif;
   color: rgb(95, 194, 179);
   text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000,
@@ -53,10 +53,49 @@
 
 .howToItem {
   margin-top: 0;
+  text-align: center;
+}
+
+.generateButton {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.form {
+  display: flex;
+  height: 2em;
 }
 
 .userInput {
-  width: 30%;
+  width: 10%;
+  margin: 0;
+  color: white;
+  font-size: 20px;
+}
+
+.userInput::placeholder {
+  color: white;
+}
+
+.red {
+  opacity: 0.5;
+  background: red;
+}
+
+.green {
+  opacity: 0.5;
+  background: green;
+}
+
+.blue {
+  opacity: 0.5;
+  background: blue;
+}
+
+.comma {
+  font-size: 2em;
+  font-family: "Noto Serif", serif;
+  margin: 0;
 }
 
 .board {
